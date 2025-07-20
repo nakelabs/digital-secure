@@ -222,7 +222,7 @@ const Testimonials = () => {
               <p className="text-slate-600">Assets Recovered</p>
             </div>
             <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">85%</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">97.9%</div>
               <p className="text-slate-600">Average Recovery Rate</p>
             </div>
             <div className="p-6">

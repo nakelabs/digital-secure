@@ -15,14 +15,14 @@ const About = () => {
       image: "/api/placeholder/300/300"
     },
     {
-      name: "Sarah Chen",
+      name: "George Hilton humphrey ",
       role: "Head of Investigations",
       specialization: "Digital Asset Recovery",
       experience: "12+ years in financial investigations",
       image: "/api/placeholder/300/300"
     },
     {
-      name: "Marcus Thompson",
+      name: " Patrick Mark",
       role: "Senior Advisor",
       specialization: "Cryptocurrency Investment Strategy",
       experience: "20+ years in financial markets",

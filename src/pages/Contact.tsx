@@ -49,7 +49,7 @@ const Contact = () => {
       icon: Mail,
       title: "Email Support",
       description: "Get detailed responses within 24 hours",
-      contact: "support@digitalsolutions.expert",
+      contact: "support@raxopayco.com",
       action: "Send Email",
       primary: true
     },
@@ -57,7 +57,7 @@ const Contact = () => {
       icon: MessageCircle,
       title: "WhatsApp Support",
       description: "Quick responses for urgent matters",
-      contact: "+1 (555) 123-4567",
+      contact: "+1 (256) 273‑2791‬‬ ",
       action: "Message on WhatsApp",
       primary: true
     },
@@ -72,9 +72,9 @@ const Contact = () => {
     {
       icon: Shield,
       title: "Secure Channel",
-      description: "Encrypted communication via Signal",
-      contact: "@DigitalSecureHelp",
-      action: "Contact on Signal",
+      description: "Encrypted communication via Facebook Messenger",
+      contact: " George Hilton Humphrey",
+      action: "Contact on Facebook",
       primary: false
     }
   ];

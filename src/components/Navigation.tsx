@@ -36,7 +36,7 @@ const Navigation = () => {
             >
               <Shield className="w-8 h-8 text-blue-600" />
             </motion.div>
-            <span className="text-xl font-bold text-slate-900">DigitalSecure</span>
+            <span className="text-xl font-bold text-slate-900">raxopayco</span>
           </Link>
 
           {/* Desktop Navigation */}
