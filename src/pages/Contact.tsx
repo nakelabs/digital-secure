@@ -277,7 +277,7 @@ const Contact = () => {
                       variant="outline"
                       size="lg"
                       className="sm:w-auto"
-                      onClick={() => window.open('https://wa.me/15551234567', '_blank')}
+                      onClick={() => window.open('https://wa.me/+12562732791', '_blank')}
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
                       WhatsApp Instead
