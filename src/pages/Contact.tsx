@@ -65,7 +65,7 @@ const Contact = () => {
       icon: Phone,
       title: "Emergency Hotline",
       description: "24/7 support for critical incidents",
-      contact: "+1 (555) 911-HELP",
+      contact: "++1 (256) 273‑2791",
       action: "Call Now",
       primary: false
     },
@@ -73,7 +73,7 @@ const Contact = () => {
       icon: Shield,
       title: "Secure Channel",
       description: "Encrypted communication via Facebook Messenger",
-      contact: " George Hilton Humphrey",
+      contact: "George Hilton Humphrey",
       action: "Contact on Facebook",
       primary: false
     }
