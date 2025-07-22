@@ -24,7 +24,7 @@ const Footer = () => {
           >
             <div className="flex items-center space-x-2 mb-4">
               <Shield className="w-8 h-8 text-blue-400" />
-              <span className="text-xl font-bold">DigitalSecure</span>
+              <span className="text-xl font-bold">raxopayco</span>
             </div>
             <p className="text-slate-300 mb-4">
               Professional digital security and cryptocurrency solutions. Protecting your digital future with expert services worldwide.
@@ -94,11 +94,11 @@ const Footer = () => {
             <div className="space-y-3 text-slate-300">
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-sm">support@digitalsolutions.expert</span>
+                <span className="text-sm">support@raxopayco.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageCircle className="w-4 h-4 text-green-400" />
-                <span className="text-sm">+1 (555) 123-4567</span>
+                <span className="text-sm">+1 (256) 273‑2791</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Globe className="w-4 h-4 text-purple-400" />
@@ -111,7 +111,7 @@ const Footer = () => {
         <div className="border-t border-slate-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-400 text-sm">
-              © 2024 DigitalSecure. All rights reserved.
+              © 2024 raxopayco. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="/privacy" className="text-slate-400 hover:text-white text-sm transition-colors">

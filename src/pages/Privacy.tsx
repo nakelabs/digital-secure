@@ -313,7 +313,7 @@ const Privacy = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <h4 className="font-semibold text-slate-900">Privacy Officer</h4>
-                      <p className="text-slate-600">privacy@digitalsolutions.expert</p>
+                      <p className="text-slate-600">support@raxopayco.com</p>
                     </div>
                     
                     <div>
