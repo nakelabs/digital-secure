@@ -11,7 +11,13 @@ import About from "./pages/About";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
+import Portfolio from "./pages/Portfolio";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -99,6 +105,56 @@ function AnimatedRoutes() {
             <Privacy />
           </motion.div>
         } />
+        <Route path="/auth" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <Auth />
+          </motion.div>
+        } />
+        <Route path="/dashboard" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          </motion.div>
+        } />
+        <Route path="/portfolio" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <ProtectedRoute>
+              <Portfolio />
+            </ProtectedRoute>
+          </motion.div>
+        } />
+        <Route path="/settings" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          </motion.div>
+        } />
         <Route path="*" element={
           <motion.div
             initial="initial"
@@ -118,11 +174,13 @@ function AnimatedRoutes() {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AnimatedRoutes />
-      </BrowserRouter>
+      <AuthProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

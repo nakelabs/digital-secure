@@ -35,6 +35,13 @@ const ServicesOverview = () => {
       description: "Discreet investigation services for relationship loyalty and partner verification needs.",
       features: ["Discrete Investigation", "Digital Analysis", "Evidence Collection", "Confidential Reports"],
       link: "/services"
+    },
+    {
+      icon: TrendingUp,
+      title: "Investment Services",
+      description: "Comprehensive investment solutions including traditional assets, digital currencies, and alternative investment opportunities.",
+      features: ["Asset Diversification", "Market Research", "Investment Planning", "Performance Tracking"],
+      link: "/auth"
     }
   ];
 
