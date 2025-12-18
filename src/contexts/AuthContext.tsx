@@ -22,10 +22,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Check if supabase client is properly initialized
+    if (!supabase || typeof supabase.auth?.getSession !== 'function') {
+      console.warn('Supabase client not properly initialized')
+      setLoading(false)
+      return
+    }
+
     // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session }, error }) => {
+      if (error) {
+        console.error('Error getting session:', error)
+      }
       setSession(session)
       setUser(session?.user ?? null)
+      setLoading(false)
+    }).catch((error) => {
+      console.error('Error in getSession:', error)
       setLoading(false)
     })
 
@@ -42,58 +55,106 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const signUp = async (email: string, password: string, firstName: string, lastName: string) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          first_name: firstName,
-          last_name: lastName,
-          full_name: `${firstName} ${lastName}`,
+    try {
+      if (!supabase || typeof supabase.auth?.signUp !== 'function') {
+        return { error: { message: 'Authentication service not available' } as any }
+      }
+      
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            first_name: firstName,
+            last_name: lastName,
+            full_name: `${firstName} ${lastName}`,
+          },
         },
-      },
-    })
-    return { error }
+      })
+      return { error }
+    } catch (error: any) {
+      return { error: { message: error.message || 'Signup failed' } as any }
+    }
   }
 
   const signIn = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    return { error }
+    try {
+      if (!supabase || typeof supabase.auth?.signInWithPassword !== 'function') {
+        return { error: { message: 'Authentication service not available' } as any }
+      }
+      
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      return { error }
+    } catch (error: any) {
+      return { error: { message: error.message || 'Login failed' } as any }
+    }
   }
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut()
-    return { error }
+    try {
+      if (!supabase || typeof supabase.auth?.signOut !== 'function') {
+        return { error: { message: 'Authentication service not available' } as any }
+      }
+      
+      const { error } = await supabase.auth.signOut()
+      return { error }
+    } catch (error: any) {
+      return { error: { message: error.message || 'Signout failed' } as any }
+    }
   }
 
   const signInWithGoogle = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth`,
-      },
-    })
-    return { error }
+    try {
+      if (!supabase || typeof supabase.auth?.signInWithOAuth !== 'function') {
+        return { error: { message: 'OAuth service not available' } as any }
+      }
+      
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth`,
+        },
+      })
+      return { error }
+    } catch (error: any) {
+      return { error: { message: error.message || 'Google login failed' } as any }
+    }
   }
 
   const signInWithFacebook = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'facebook',
-      options: {
-        redirectTo: `${window.location.origin}/auth`,
-      },
-    })
-    return { error }
+    try {
+      if (!supabase || typeof supabase.auth?.signInWithOAuth !== 'function') {
+        return { error: { message: 'OAuth service not available' } as any }
+      }
+      
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'facebook',
+        options: {
+          redirectTo: `${window.location.origin}/auth`,
+        },
+      })
+      return { error }
+    } catch (error: any) {
+      return { error: { message: error.message || 'Facebook login failed' } as any }
+    }
   }
 
   const resetPassword = async (email: string) => {
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth?reset=true`,
-    })
-    return { error }
+    try {
+      if (!supabase || typeof supabase.auth?.resetPasswordForEmail !== 'function') {
+        return { error: { message: 'Password reset service not available' } as any }
+      }
+      
+      const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth?reset=true`,
+      })
+      return { error }
+    } catch (error: any) {
+      return { error: { message: error.message || 'Password reset failed' } as any }
+    }
   }
 
   const value: AuthContextType = {
