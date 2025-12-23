@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TrendingUp, Shield, Search, Heart, ArrowRight, CheckCircle, Clock, Users } from 'lucide-react';
+import { TrendingUp, Shield, PieChart, Building, ArrowRight, CheckCircle, Clock, DollarSign, Bitcoin, Banknote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
@@ -10,80 +10,80 @@ import { Link } from 'react-router-dom';
 const Services = () => {
   const services = [
     {
-      icon: TrendingUp,
-      title: "Digital Asset & Cryptocurrency Investment Advisory",
-      description: "Expert guidance for optimizing your cryptocurrency portfolio and investment strategy.",
+      icon: Bitcoin,
+      title: "Cryptocurrency Portfolio Management",
+      description: "Professional Bitcoin, Ethereum, and altcoin investment management with AI-powered strategies.",
       features: [
-        "Portfolio optimization and risk assessment",
-        "Market analysis and trend forecasting", 
-        "Regulatory compliance guidance",
-        "DeFi and traditional crypto investment strategies",
-        "Custom investment plans for individuals and institutions"
+        "Automated portfolio rebalancing and optimization",
+        "Real-time market analysis and trend forecasting", 
+        "Risk management and stop-loss strategies",
+        "DeFi yield farming and staking optimization",
+        "Tax-efficient crypto investment planning"
       ],
       process: [
-        "Initial consultation and risk assessment",
-        "Portfolio analysis and strategy development",
-        "Implementation and monitoring",
-        "Regular reviews and adjustments"
+        "Portfolio assessment and risk profiling",
+        "Custom strategy development and backtesting",
+        "Implementation with automated trading",
+        "Continuous monitoring and optimization"
       ],
-      pricing: "Starting from $500/consultation"
+      pricing: "Starting from $2,500/month"
     },
     {
-      icon: Shield,
-      title: "Crypto Merchant Services",
-      description: "Comprehensive cryptocurrency merchant solutions for businesses and individuals.",
+      icon: Building,
+      title: "Digital Real Estate Investment",
+      description: "Tokenized real estate investments and blockchain-based property opportunities.",
       features: [
-        "Bulk cryptocurrency buying/selling with competitive rates",
-        "Secure wallet setup and management",
-        "Multi-signature wallet implementation", 
-        "Payment gateway integration for businesses",
-        "Cryptocurrency exchange consulting"
+        "Tokenized property investment opportunities",
+        "Virtual real estate in metaverse platforms",
+        "Real estate NFT and fractional ownership", 
+        "Property investment via blockchain protocols",
+        "Commercial and residential tokenized assets"
       ],
       process: [
-        "Business needs assessment",
-        "Custom solution design",
-        "Integration and setup",
-        "Training and ongoing support"
+        "Investment opportunity analysis",
+        "Due diligence and blockchain verification",
+        "Token acquisition and wallet setup",
+        "Portfolio tracking and yield monitoring"
       ],
-      pricing: "Custom pricing based on volume"
+      pricing: "Minimum investment: $10,000"
     },
     {
-      icon: Search,
-      title: "Cyber Recovery & Security Services",
-      description: "Professional recovery services for hacked accounts and scammed funds.",
+      icon: PieChart,
+      title: "Institutional Crypto Fund Management",
+      description: "Comprehensive cryptocurrency fund management for institutions and high-net-worth individuals.",
       features: [
-        "Hacked account recovery and security hardening",
-        "Scammed fund recovery and blockchain forensics",
-        "Digital asset tracing and investigation",
-        "Cybersecurity audits and penetration testing",
-        "Identity theft protection and recovery"
+        "Multi-million dollar crypto fund management",
+        "Institutional-grade security and custody",
+        "Quantitative trading and arbitrage strategies",
+        "Regulatory compliance and reporting",
+        "24/7 monitoring and risk management"
       ],
       process: [
-        "Incident assessment and documentation",
-        "Investigation and tracing",
-        "Recovery strategy implementation",
-        "Security hardening and prevention"
+        "Fund structure and compliance setup",
+        "Strategy development and backtesting",
+        "Implementation with institutional partners",
+        "Regular reporting and performance reviews"
       ],
-      pricing: "Emergency consultations from $1,000"
+      pricing: "Custom pricing for $1M+ investments"
     },
     {
-      icon: Heart,
-      title: "Relationship Loyalty Verification",
-      description: "Discreet and professional relationship verification services.",
+      icon: DollarSign,
+      title: "Crypto Trading & Investment Education",
+      description: "Comprehensive training programs for cryptocurrency trading and investment strategies.",
       features: [
-        "Discreet partner fidelity investigations",
-        "Digital footprint analysis and social media monitoring",
-        "Evidence collection and documentation",
-        "Confidential reporting and consultation",
-        "Legal support coordination"
+        "Live trading sessions with expert traders",
+        "Technical analysis and chart pattern recognition",
+        "Fundamental analysis of crypto projects",
+        "Risk management and portfolio theory",
+        "One-on-one mentorship programs"
       ],
       process: [
-        "Confidential consultation",
-        "Investigation planning",
-        "Discrete evidence gathering",
-        "Comprehensive reporting"
+        "Skill assessment and learning plan creation",
+        "Interactive workshops and live sessions",
+        "Practice trading with virtual portfolios",
+        "Ongoing mentorship and performance tracking"
       ],
-      pricing: "Consultations from $750"
+      pricing: "Courses from $1,500 - Mentorship from $5,000"
     }
   ];
 
@@ -96,10 +96,10 @@ const Services = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Professional Digital Solutions
+              Investment Services & Portfolio Management
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              Comprehensive services to protect, recover, and optimize your digital assets and relationships
+              Professional cryptocurrency and digital real estate investment solutions for maximizing returns
             </p>
           </div>
         </div>
@@ -135,9 +135,9 @@ const Services = () => {
                     
                     <div className="bg-slate-50 p-6 rounded-xl">
                       <p className="text-lg font-semibold text-slate-900 mb-2">{service.pricing}</p>
-                      <Link to="/contact">
+                      <Link to="/auth">
                         <Button className="bg-blue-600 hover:bg-blue-700">
-                          Get Consultation <ArrowRight className="w-4 h-4 ml-2" />
+                          Start Investing <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
                       </Link>
                     </div>
@@ -172,18 +172,18 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Bundle Package Section */}
+      {/* Investment Package Section */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Need Multiple Services?
+            Ready to Start Investing?
           </h2>
           <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-            Save up to 25% with our comprehensive digital security packages
+            Get access to our comprehensive cryptocurrency and real estate investment platform
           </p>
-          <Link to="/contact">
+          <Link to="/auth">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
-              Discuss Custom Package
+              Open Investment Account
             </Button>
           </Link>
         </div>

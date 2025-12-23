@@ -8,26 +8,26 @@ const StatsSection = () => {
     {
       icon: Users,
       number: "500+",
-      label: "Clients Served",
-      description: "Trusted by individuals and institutions worldwide"
+      label: "Active Investors",
+      description: "Growing community of crypto and real estate investors"
     },
     {
       icon: TrendingUp,
       number: "$50M+",
-      label: "Assets Recovered",
-      description: "Successfully recovered digital assets and funds"
+      label: "Assets Under Management",
+      description: "Bitcoin, Ethereum, and tokenized real estate portfolios"
     },
     {
       icon: Shield,
-      number: "85%",
-      label: "Success Rate",
-      description: "Industry-leading recovery and resolution rate"
+      number: "95%",
+      label: "Avg. Annual ROI",
+      description: "Exceptional returns through strategic crypto investments"
     },
     {
       icon: Clock,
       number: "24/7",
-      label: "Global Support",
-      description: "Round-the-clock assistance when you need it most"
+      label: "Market Access",
+      description: "Round-the-clock cryptocurrency trading and monitoring"
     }
   ];
 

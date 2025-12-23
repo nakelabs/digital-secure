@@ -12,6 +12,7 @@ const Navigation = () => {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
+    { href: '/portfolio', label: 'Investment Portal' },
     { href: '/about', label: 'About' },
     { href: '/testimonials', label: 'Testimonials' },
     { href: '/contact', label: 'Contact' }
@@ -65,10 +66,10 @@ const Navigation = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
             >
-              <Link to="/contact">
+              <Link to="/auth">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                    Get Help Now
+                    Start Investing
                   </Button>
                 </motion.div>
               </Link>
@@ -123,9 +124,9 @@ const Navigation = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
                 >
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>
+                  <Link to="/auth" onClick={() => setIsOpen(false)}>
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full mt-4">
-                      Get Help Now
+                      Start Investing
                     </Button>
                   </Link>
                 </motion.div>

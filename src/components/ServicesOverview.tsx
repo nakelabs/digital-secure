@@ -30,13 +30,6 @@ const ServicesOverview = () => {
       link: "/services"
     },
     {
-      icon: Heart,
-      title: "Relationship Verification",
-      description: "Discreet investigation services for relationship loyalty and partner verification needs.",
-      features: ["Discrete Investigation", "Digital Analysis", "Evidence Collection", "Confidential Reports"],
-      link: "/services"
-    },
-    {
       icon: TrendingUp,
       title: "Investment Services",
       description: "Comprehensive investment solutions including traditional assets, digital currencies, and alternative investment opportunities.",
@@ -104,7 +97,7 @@ const ServicesOverview = () => {
                   <Link to={service.link}>
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                       <Button variant="outline" className="w-full hover:bg-blue-50">
-                        Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                        {service.title === "Investment Services" ? "Invest Now" : "Learn More"} <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </motion.div>
                   </Link>

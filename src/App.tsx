@@ -11,9 +11,11 @@ import About from "./pages/About";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import InvestmentOptions from "./pages/InvestmentOptions";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Portfolio from "./pages/Portfolio";
+import AddAsset from "./pages/AddAsset";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -105,6 +107,17 @@ function AnimatedRoutes() {
             <Privacy />
           </motion.div>
         } />
+        <Route path="/investment-options" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <InvestmentOptions />
+          </motion.div>
+        } />
         <Route path="/auth" element={
           <motion.div
             initial="initial"
@@ -139,6 +152,19 @@ function AnimatedRoutes() {
           >
             <ProtectedRoute>
               <Portfolio />
+            </ProtectedRoute>
+          </motion.div>
+        } />
+        <Route path="/portfolio/add-asset" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <ProtectedRoute>
+              <AddAsset />
             </ProtectedRoute>
           </motion.div>
         } />

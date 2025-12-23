@@ -21,12 +21,17 @@ import {
   Plus,
   Eye,
   MoreVertical,
-  Filter
+  Filter,
+  Bitcoin,
+  Landmark,
+  Globe,
+  Fuel,
+  BarChart2
 } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useToast } from '@/hooks/use-toast'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { PieChart as RechartsPieChart, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Pie } from 'recharts'
+import { PieChart as RechartsPieChart, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Pie, LineChart, Line, AreaChart, Area } from 'recharts'
 
 const Portfolio = () => {
   const { user, signOut } = useAuth()
@@ -59,89 +64,178 @@ const Portfolio = () => {
 
   // Portfolio allocation data
   const portfolioData = [
-    { name: 'Cryptocurrency', value: 45, amount: 56053, color: '#3b82f6' },
-    { name: 'Stocks', value: 30, amount: 37369, color: '#10b981' },
-    { name: 'Alternative Assets', value: 25, amount: 31141, color: '#8b5cf6' },
+    { name: 'Forex', value: 35, amount: 68250, color: '#3b82f6' },
+    { name: 'Cryptocurrencies', value: 25, amount: 48750, color: '#f59e0b' },
+    { name: 'Stocks (CFDs)', value: 20, amount: 39000, color: '#10b981' },
+    { name: 'Indices', value: 12, amount: 23400, color: '#8b5cf6' },
+    { name: 'Commodities', value: 8, amount: 15600, color: '#ef4444' },
   ]
 
   // Detailed holdings
   const holdings = [
+    // Forex (Foreign Exchange)
     { 
-      name: 'Bitcoin', 
-      symbol: 'BTC', 
+      name: 'EUR/USD', 
+      symbol: 'EURUSD', 
+      category: 'Forex',
+      price: '1.0845', 
+      change: '+0.12%', 
+      holdings: '5.5 lots',
+      value: '$28,450.00',
+      allocation: 14.6,
+      isPositive: true,
+      icon: Globe
+    },
+    { 
+      name: 'GBP/USD', 
+      symbol: 'GBPUSD', 
+      category: 'Forex',
+      price: '1.2684', 
+      change: '+0.08%', 
+      holdings: '3.2 lots',
+      value: '$21,800.00',
+      allocation: 11.2,
+      isPositive: true,
+      icon: Globe
+    },
+    { 
+      name: 'USD/JPY', 
+      symbol: 'USDJPY', 
+      category: 'Forex',
+      price: '149.25', 
+      change: '-0.15%', 
+      holdings: '2.1 lots',
+      value: '$18,000.00',
+      allocation: 9.2,
+      isPositive: false,
+      icon: Globe
+    },
+    
+    // Cryptocurrencies (CFDs)
+    { 
+      name: 'Bitcoin CFD', 
+      symbol: 'BTCUSD', 
       category: 'Cryptocurrency',
       price: '$43,250.00', 
-      change: '+5.67%', 
-      holdings: '2.45 BTC',
-      value: '$105,962.50',
-      allocation: 42.5,
-      isPositive: true 
+      change: '+2.45%', 
+      holdings: '0.65 BTC',
+      value: '$28,112.50',
+      allocation: 14.4,
+      isPositive: true,
+      icon: Bitcoin
     },
     { 
-      name: 'Ethereum', 
-      symbol: 'ETH', 
+      name: 'Ethereum CFD', 
+      symbol: 'ETHUSD', 
       category: 'Cryptocurrency',
       price: '$2,680.00', 
-      change: '+3.21%', 
-      holdings: '15.8 ETH',
-      value: '$42,344.00',
-      allocation: 17.0,
-      isPositive: true 
+      change: '+1.89%', 
+      holdings: '7.8 ETH',
+      value: '$20,904.00',
+      allocation: 10.7,
+      isPositive: true,
+      icon: Bitcoin
     },
+    
+    // Stocks (CFDs) - You don't own the shares
     { 
-      name: 'Apple Inc.', 
+      name: 'Apple Inc. CFD', 
       symbol: 'AAPL', 
-      category: 'Stocks',
+      category: 'Stock CFD',
       price: '$185.20', 
-      change: '-1.15%', 
-      holdings: '50 shares',
-      value: '$9,260.00',
-      allocation: 3.7,
-      isPositive: false 
+      change: '-0.85%', 
+      holdings: '75 CFDs',
+      value: '$13,890.00',
+      allocation: 7.1,
+      isPositive: false,
+      icon: Landmark
     },
     { 
-      name: 'Tesla Inc.', 
+      name: 'Tesla Inc. CFD', 
       symbol: 'TSLA', 
-      category: 'Stocks',
+      category: 'Stock CFD',
       price: '$248.50', 
-      change: '+2.89%', 
-      holdings: '25 shares',
-      value: '$6,212.50',
-      allocation: 2.5,
-      isPositive: true 
-    },
-    { 
-      name: 'Google', 
-      symbol: 'GOOGL', 
-      category: 'Stocks',
-      price: '$142.30', 
-      change: '+0.95%', 
-      holdings: '12 shares',
-      value: '$1,707.60',
-      allocation: 0.7,
-      isPositive: true 
-    },
-    { 
-      name: 'Real Estate Fund', 
-      symbol: 'REIT', 
-      category: 'Alternative Assets',
-      price: '$85.40', 
       change: '+1.23%', 
-      holdings: '150 units',
-      value: '$12,810.00',
+      holdings: '35 CFDs',
+      value: '$8,697.50',
+      allocation: 4.5,
+      isPositive: true,
+      icon: Landmark
+    },
+    { 
+      name: 'Google CFD', 
+      symbol: 'GOOGL', 
+      category: 'Stock CFD',
+      price: '$142.30', 
+      change: '+2.14%', 
+      holdings: '120 CFDs',
+      value: '$17,076.00',
+      allocation: 8.7,
+      isPositive: true,
+      icon: Landmark
+    },
+    
+    // Indices
+    { 
+      name: 'S&P 500 Index', 
+      symbol: 'SPX500', 
+      category: 'Index',
+      price: '4,785.60', 
+      change: '+0.65%', 
+      holdings: '2.8 CFDs',
+      value: '$13,399.68',
+      allocation: 6.9,
+      isPositive: true,
+      icon: BarChart2
+    },
+    { 
+      name: 'NASDAQ 100', 
+      symbol: 'NAS100', 
+      category: 'Index',
+      price: '16,845.30', 
+      change: '+1.12%', 
+      holdings: '0.6 CFDs',
+      value: '$10,107.18',
       allocation: 5.2,
-      isPositive: true 
+      isPositive: true,
+      icon: BarChart2
+    },
+    
+    // Commodities - Often used as inflation or risk hedges
+    { 
+      name: 'Gold', 
+      symbol: 'XAUUSD', 
+      category: 'Commodity',
+      price: '$2,045.80', 
+      change: '+0.35%', 
+      holdings: '4.2 oz',
+      value: '$8,592.36',
+      allocation: 4.4,
+      isPositive: true,
+      icon: Fuel
+    },
+    { 
+      name: 'Crude Oil WTI', 
+      symbol: 'WTIUSD', 
+      category: 'Commodity',
+      price: '$78.45', 
+      change: '-1.25%', 
+      holdings: '89 barrels',
+      value: '$6,982.05',
+      allocation: 3.6,
+      isPositive: false,
+      icon: Fuel
     }
   ]
 
   // Performance data for the past months
   const performanceData = [
-    { month: 'Jul', crypto: 45000, stocks: 32000, alternatives: 25000 },
-    { month: 'Aug', crypto: 48000, stocks: 33500, alternatives: 27000 },
-    { month: 'Sep', crypto: 52000, stocks: 35000, alternatives: 28500 },
-    { month: 'Oct', crypto: 55000, stocks: 36500, alternatives: 30000 },
-    { month: 'Nov', crypto: 54000, stocks: 37000, alternatives: 31000 },
-    { month: 'Dec', crypto: 56053, stocks: 37369, alternatives: 31141 },
+    { month: 'Jul', forex: 62000, crypto: 41000, stocks: 35000, indices: 21000, commodities: 13500 },
+    { month: 'Aug', forex: 64500, crypto: 43500, stocks: 36200, indices: 21800, commodities: 14200 },
+    { month: 'Sep', forex: 66200, crypto: 46000, stocks: 37800, indices: 22500, commodities: 14800 },
+    { month: 'Oct', forex: 67800, crypto: 47500, stocks: 38500, indices: 23100, commodities: 15200 },
+    { month: 'Nov', forex: 67200, crypto: 48200, stocks: 38800, indices: 23300, commodities: 15400 },
+    { month: 'Dec', forex: 68250, crypto: 48750, stocks: 39000, indices: 23400, commodities: 15600 },
   ]
 
   const COLORS = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ef4444']
@@ -264,7 +358,10 @@ const Portfolio = () => {
                 <Filter className="w-4 h-4 mr-2" />
                 Filter
               </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700">
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700"
+                onClick={() => navigate('/portfolio/add-asset')}
+              >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Asset
               </Button>
@@ -283,10 +380,10 @@ const Portfolio = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-slate-400 text-sm">Total Portfolio Value</p>
-                    <h3 className="text-2xl font-bold text-white">$124,563.00</h3>
+                    <h3 className="text-2xl font-bold text-white">$195,000.00</h3>
                     <div className="flex items-center space-x-1 mt-1">
                       <ArrowUpRight className="w-4 h-4 text-green-400" />
-                      <span className="text-green-400 text-sm font-medium">+8.23%</span>
+                      <span className="text-green-400 text-sm font-medium">+6.45%</span>
                     </div>
                   </div>
                   <div className="p-3 bg-blue-600 rounded-xl">
@@ -301,9 +398,9 @@ const Portfolio = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-slate-400 text-sm">Total Assets</p>
-                    <h3 className="text-2xl font-bold text-white">6</h3>
+                    <h3 className="text-2xl font-bold text-white">13</h3>
                     <div className="flex items-center space-x-1 mt-1">
-                      <span className="text-slate-400 text-sm">Across 3 categories</span>
+                      <span className="text-slate-400 text-sm">Across 5 categories</span>
                     </div>
                   </div>
                   <div className="p-3 bg-green-600 rounded-xl">
@@ -318,10 +415,10 @@ const Portfolio = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-slate-400 text-sm">Today's P&L</p>
-                    <h3 className="text-2xl font-bold text-green-400">+$4,287.50</h3>
+                    <h3 className="text-2xl font-bold text-green-400">+$2,845.30</h3>
                     <div className="flex items-center space-x-1 mt-1">
                       <ArrowUpRight className="w-4 h-4 text-green-400" />
-                      <span className="text-green-400 text-sm font-medium">+3.56%</span>
+                      <span className="text-green-400 text-sm font-medium">+1.48%</span>
                     </div>
                   </div>
                   <div className="p-3 bg-purple-600 rounded-xl">
@@ -400,20 +497,34 @@ const Portfolio = () => {
                 <CardContent>
                   <div className="h-64">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={performanceData}>
+                      <AreaChart data={performanceData}>
+                        <defs>
+                          <linearGradient id="forexGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
+                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                          </linearGradient>
+                          <linearGradient id="cryptoGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3}/>
+                            <stop offset="95%" stopColor="#f59e0b" stopOpacity={0}/>
+                          </linearGradient>
+                          <linearGradient id="stocksGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                            <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                          </linearGradient>
+                        </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
                         <XAxis dataKey="month" stroke="#94a3b8" fontSize={12} />
                         <YAxis stroke="#94a3b8" fontSize={12} tickFormatter={(value) => `$${(value / 1000)}k`} />
                         <Tooltip 
                           formatter={(value) => [`$${value.toLocaleString()}`, '']}
                           labelStyle={{ color: '#1e293b' }}
-                          contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569' }}
+                          contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569', borderRadius: '8px' }}
                         />
                         <Legend />
-                        <Bar dataKey="crypto" fill="#3b82f6" name="Cryptocurrency" />
-                        <Bar dataKey="stocks" fill="#10b981" name="Stocks" />
-                        <Bar dataKey="alternatives" fill="#8b5cf6" name="Alternatives" />
-                      </BarChart>
+                        <Area type="monotone" dataKey="forex" stroke="#3b82f6" fillOpacity={1} fill="url(#forexGradient)" strokeWidth={2} name="Forex" />
+                        <Area type="monotone" dataKey="crypto" stroke="#f59e0b" fillOpacity={1} fill="url(#cryptoGradient)" strokeWidth={2} name="Cryptocurrencies" />
+                        <Area type="monotone" dataKey="stocks" stroke="#10b981" fillOpacity={1} fill="url(#stocksGradient)" strokeWidth={2} name="Stock CFDs" />
+                      </AreaChart>
                     </ResponsiveContainer>
                   </div>
                 </CardContent>
@@ -461,8 +572,12 @@ const Portfolio = () => {
                         >
                           <td className="py-4">
                             <div className="flex items-center space-x-3">
-                              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                                <span className="text-xs font-bold">{asset.symbol[0]}</span>
+                              <div className="w-10 h-10 bg-gradient-to-br from-slate-600 to-slate-800 rounded-xl flex items-center justify-center border border-slate-600">
+                                {asset.icon ? (
+                                  <asset.icon className="w-5 h-5 text-white" />
+                                ) : (
+                                  <span className="text-xs font-bold text-white">{asset.symbol.slice(0, 2)}</span>
+                                )}
                               </div>
                               <div>
                                 <p className="font-medium text-white">{asset.name}</p>

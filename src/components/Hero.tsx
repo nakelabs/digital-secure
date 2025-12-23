@@ -24,7 +24,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <Shield className="w-4 h-4 mr-2" />
-                Trusted by 500+ Clients Worldwide
+                Trusted by 500+ Crypto Investors Worldwide
               </motion.div>
               <motion.h1 
                 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
@@ -32,8 +32,8 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Secure Your Digital Future with 
-                <span className="text-blue-600"> Expert Solutions</span>
+                Invest in Bitcoin & 
+                <span className="text-blue-600"> Digital Real Estate</span>
               </motion.h1>
               <motion.p 
                 className="text-xl text-slate-600 mb-8 leading-relaxed"
@@ -41,8 +41,8 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                Professional cryptocurrency services, cyber recovery, and digital security solutions. 
-                Protect, recover, and optimize your digital assets with our trusted expertise.
+                Professional cryptocurrency investment platform specializing in Bitcoin, Ethereum, and digital real estate. 
+                Build wealth through strategic crypto investments and tokenized property portfolios with expert guidance.
               </motion.p>
             </div>
 
@@ -59,9 +59,9 @@ const Hero = () => {
               </div>
               <div className="flex items-center">
                 <Users className="w-5 h-5 text-blue-600 mr-2" />
-                <span className="text-slate-700 font-medium">500+ Cases</span>
+                <span className="text-slate-700 font-medium">500+ Investors</span>
               </div>
-              <div className="text-slate-700 font-medium">$50M+ Recovered</div>
+              <div className="text-slate-700 font-medium">$50M+ Invested</div>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -74,15 +74,15 @@ const Hero = () => {
               <Link to="/contact">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
-                    Get Free Consultation
+                    Start Investing Today
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </motion.div>
               </Link>
-              <Link to="/services">
+              <Link to="/investment-options">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-2 hover:bg-slate-50">
-                    View Our Services
+                    View Investment Options
                   </Button>
                 </motion.div>
               </Link>
@@ -104,10 +104,10 @@ const Hero = () => {
               >
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { value: "85%", label: "Recovery Rate", delay: 0.5 },
-                    { value: "24/7", label: "Support", delay: 0.6 },
-                    { value: "500+", label: "Clients", delay: 0.7 },
-                    { value: "$50M+", label: "Recovered", delay: 0.8 }
+                    { value: "95%", label: "ROI Average", delay: 0.5 },
+                    { value: "24/7", label: "Trading", delay: 0.6 },
+                    { value: "500+", label: "Investors", delay: 0.7 },
+                    { value: "$50M+", label: "Invested", delay: 0.8 }
                   ].map((stat, index) => (
                     <motion.div 
                       key={index}

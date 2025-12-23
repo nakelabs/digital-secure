@@ -25,7 +25,7 @@ import {
 import { useAuth } from '@/contexts/AuthContext'
 import { useToast } from '@/hooks/use-toast'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts'
 
 const Dashboard = () => {
   const { user, signOut } = useAuth()
@@ -50,14 +50,39 @@ const Dashboard = () => {
     }
   }
 
-  // Sample chart data
+  // Historical portfolio growth data (1995-2025)
   const chartData = [
-    { name: 'Jan', value: 85000 },
-    { name: 'Feb', value: 92000 },
-    { name: 'Mar', value: 88000 },
-    { name: 'Apr', value: 95000 },
-    { name: 'May', value: 108000 },
-    { name: 'Jun', value: 124500 },
+    { year: '1995', value: 10000 },
+    { year: '1996', value: 11200 },
+    { year: '1997', value: 13800 },
+    { year: '1998', value: 15200 },
+    { year: '1999', value: 18500 },
+    { year: '2000', value: 22000 },
+    { year: '2001', value: 19500 },
+    { year: '2002', value: 16200 },
+    { year: '2003', value: 14800 },
+    { year: '2004', value: 18200 },
+    { year: '2005', value: 21500 },
+    { year: '2006', value: 25800 },
+    { year: '2007', value: 31200 },
+    { year: '2008', value: 28500 },
+    { year: '2009', value: 18200 },
+    { year: '2010', value: 22800 },
+    { year: '2011', value: 26500 },
+    { year: '2012', value: 28900 },
+    { year: '2013', value: 32500 },
+    { year: '2014', value: 36800 },
+    { year: '2015', value: 41200 },
+    { year: '2016', value: 38900 },
+    { year: '2017', value: 45200 },
+    { year: '2018', value: 52800 },
+    { year: '2019', value: 58500 },
+    { year: '2020', value: 48200 },
+    { year: '2021', value: 68900 },
+    { year: '2022', value: 58200 },
+    { year: '2023', value: 75500 },
+    { year: '2024', value: 95200 },
+    { year: '2025', value: 124500 }
   ]
 
   // Sample assets data
@@ -238,15 +263,22 @@ const Dashboard = () => {
                       </Badge>
                       <span className="text-slate-400 text-sm">+$6,378.50</span>
                     </div>
+                    <div className="mt-2 text-sm text-slate-400">
+                      30-year portfolio growth
+                    </div>
                   </div>
-                  <div className="hidden md:flex space-x-4">
+                  <div className="hidden md:flex space-x-6">
                     <div className="text-center">
                       <p className="text-2xl font-semibold text-green-400">+$12,450</p>
                       <p className="text-slate-400 text-sm">This Month</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-semibold text-blue-400">+$45,200</p>
+                      <p className="text-2xl font-semibold text-blue-400">+$114,500</p>
                       <p className="text-slate-400 text-sm">Total Gains</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-2xl font-semibold text-purple-400">+1,145%</p>
+                      <p className="text-slate-400 text-sm">Total Return</p>
                     </div>
                   </div>
                 </div>
@@ -265,35 +297,49 @@ const Dashboard = () => {
                 <CardTitle className="text-slate-200 flex items-center justify-between">
                   Portfolio Growth
                   <div className="flex space-x-2">
-                    <Button variant="ghost" size="sm" className="text-xs text-slate-400 hover:text-white">1D</Button>
-                    <Button variant="ghost" size="sm" className="text-xs text-slate-400 hover:text-white">1W</Button>
-                    <Button variant="ghost" size="sm" className="text-xs bg-blue-600 text-white hover:bg-blue-700">6M</Button>
                     <Button variant="ghost" size="sm" className="text-xs text-slate-400 hover:text-white">1Y</Button>
+                    <Button variant="ghost" size="sm" className="text-xs text-slate-400 hover:text-white">5Y</Button>
+                    <Button variant="ghost" size="sm" className="text-xs text-slate-400 hover:text-white">10Y</Button>
+                    <Button variant="ghost" size="sm" className="text-xs bg-blue-600 text-white hover:bg-blue-700">All</Button>
                   </div>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={chartData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
+                    <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#475569" opacity={0.3} />
                       <XAxis 
-                        dataKey="name" 
+                        dataKey="year" 
                         stroke="#94a3b8"
-                        fontSize={12}
+                        fontSize={11}
+                        interval="preserveStartEnd"
+                        tick={{ fill: '#94a3b8' }}
                       />
                       <YAxis 
                         stroke="#94a3b8"
-                        fontSize={12}
+                        fontSize={11}
                         tickFormatter={(value) => `$${(value / 1000)}k`}
+                        domain={['dataMin - 5000', 'dataMax + 5000']}
+                        tick={{ fill: '#94a3b8' }}
+                      />
+                      <Tooltip 
+                        formatter={(value) => [`$${parseInt(value).toLocaleString()}`, 'Portfolio Value']}
+                        labelFormatter={(label) => `Year: ${label}`}
+                        contentStyle={{ 
+                          backgroundColor: '#1e293b', 
+                          border: '1px solid #475569',
+                          borderRadius: '8px',
+                          color: '#f1f5f9'
+                        }}
                       />
                       <Line 
                         type="monotone" 
                         dataKey="value" 
                         stroke="#3b82f6" 
                         strokeWidth={3}
-                        dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
-                        activeDot={{ r: 6, stroke: '#3b82f6', strokeWidth: 2 }}
+                        dot={false}
+                        activeDot={{ r: 5, stroke: '#3b82f6', strokeWidth: 2, fill: '#3b82f6' }}
                       />
                     </LineChart>
                   </ResponsiveContainer>
