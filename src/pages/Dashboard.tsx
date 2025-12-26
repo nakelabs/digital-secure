@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -26,6 +26,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useToast } from '@/hooks/use-toast'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts'
+import { dbService } from '@/services/database'
 
 const Dashboard = () => {
   const { user, signOut } = useAuth()
@@ -33,6 +34,9 @@ const Dashboard = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [portfolioData, setPortfolioData] = useState(null)
+  const [assets, setAssets] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleSignOut = async () => {
     const { error } = await signOut()
@@ -50,89 +54,62 @@ const Dashboard = () => {
     }
   }
 
-  // Historical portfolio growth data (1995-2025)
-  const chartData = [
-    { year: '1995', value: 10000 },
-    { year: '1996', value: 11200 },
-    { year: '1997', value: 13800 },
-    { year: '1998', value: 15200 },
-    { year: '1999', value: 18500 },
-    { year: '2000', value: 22000 },
-    { year: '2001', value: 19500 },
-    { year: '2002', value: 16200 },
-    { year: '2003', value: 14800 },
-    { year: '2004', value: 18200 },
-    { year: '2005', value: 21500 },
-    { year: '2006', value: 25800 },
-    { year: '2007', value: 31200 },
-    { year: '2008', value: 28500 },
-    { year: '2009', value: 18200 },
-    { year: '2010', value: 22800 },
-    { year: '2011', value: 26500 },
-    { year: '2012', value: 28900 },
-    { year: '2013', value: 32500 },
-    { year: '2014', value: 36800 },
-    { year: '2015', value: 41200 },
-    { year: '2016', value: 38900 },
-    { year: '2017', value: 45200 },
-    { year: '2018', value: 52800 },
-    { year: '2019', value: 58500 },
-    { year: '2020', value: 48200 },
-    { year: '2021', value: 68900 },
-    { year: '2022', value: 58200 },
-    { year: '2023', value: 75500 },
-    { year: '2024', value: 95200 },
-    { year: '2025', value: 124500 }
-  ]
-
-  // Sample assets data
-  const assets = [
-    { 
-      name: 'Bitcoin', 
-      symbol: 'BTC', 
-      price: '$43,250.00', 
-      change: '+5.67%', 
-      holdings: '2.45 BTC',
-      value: '$105,962.50',
-      isPositive: true 
-    },
-    { 
-      name: 'Ethereum', 
-      symbol: 'ETH', 
-      price: '$2,680.00', 
-      change: '+3.21%', 
-      holdings: '15.8 ETH',
-      value: '$42,344.00',
-      isPositive: true 
-    },
-    { 
-      name: 'Apple Inc.', 
-      symbol: 'AAPL', 
-      price: '$185.20', 
-      change: '-1.15%', 
-      holdings: '50 shares',
-      value: '$9,260.00',
-      isPositive: false 
-    },
-    { 
-      name: 'Tesla Inc.', 
-      symbol: 'TSLA', 
-      price: '$248.50', 
-      change: '+2.89%', 
-      holdings: '25 shares',
-      value: '$6,212.50',
-      isPositive: true 
-    },
-    { 
-      name: 'Google', 
-      symbol: 'GOOGL', 
-      price: '$142.30', 
-      change: '+0.95%', 
-      holdings: '12 shares',
-      value: '$1,707.60',
-      isPositive: true 
+  // Load real portfolio data from database
+  const loadDashboardData = async () => {
+    try {
+      setIsLoading(true)
+      const stats = await dbService.getPortfolioStats()
+      const userAssets = await dbService.getUserAssets()
+      
+      setPortfolioData(stats)
+      setAssets(userAssets)
+    } catch (error) {
+      console.error('Error loading dashboard data:', error)
+      toast({
+        title: "Error loading dashboard",
+        description: "Failed to load your dashboard data. Please try again.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsLoading(false)
     }
-  ]
+  }
+
+  useEffect(() => {
+    if (user) {
+      loadDashboardData()
+    }
+  }, [user])
+
+  // Generate chart data based on user's actual portfolio over time
+  // For now, we'll show a simple growth chart. In production, you'd store historical data
+  const generateChartData = () => {
+    if (!portfolioData || portfolioData.assetCount === 0) {
+      return []
+    }
+    
+    const today = new Date()
+    const data = []
+    
+    // Generate sample historical data based on current portfolio value
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date(today)
+      date.setMonth(date.getMonth() - i)
+      
+      // Simulate historical growth with some randomness
+      const baseValue = portfolioData.currentValue
+      const growthFactor = 1 - (i * 0.08) + (Math.random() * 0.1 - 0.05)
+      
+      data.push({
+        year: date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' }),
+        value: Math.max(0, Math.round(baseValue * growthFactor))
+      })
+    }
+    
+    return data
+  }
+
+  const chartData = generateChartData()
 
   const sidebarItems = [
     { icon: BarChart3, label: 'Dashboard', path: '/dashboard' },
@@ -255,30 +232,45 @@ const Dashboard = () => {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-4xl font-bold text-white mb-2">$124,500.00</h2>
+                    <h2 className="text-4xl font-bold text-white mb-2">
+                      ${portfolioData ? portfolioData.currentValue.toLocaleString() : '0.00'}
+                    </h2>
                     <div className="flex items-center space-x-2">
-                      <Badge className="bg-green-600 hover:bg-green-700 text-white">
-                        <ArrowUpRight className="w-3 h-3 mr-1" />
-                        +5.4% today
-                      </Badge>
-                      <span className="text-slate-400 text-sm">+$6,378.50</span>
+                      {portfolioData && portfolioData.profitLoss !== 0 && (
+                        <Badge className={portfolioData.profitLoss >= 0 ? "bg-green-600 hover:bg-green-700 text-white" : "bg-red-600 hover:bg-red-700 text-white"}>
+                          {portfolioData.profitLoss >= 0 ? <ArrowUpRight className="w-3 h-3 mr-1" /> : <ArrowDownRight className="w-3 h-3 mr-1" />}
+                          {portfolioData.profitLoss >= 0 ? '+' : ''}{portfolioData.profitLossPercentage.toFixed(2)}%
+                        </Badge>
+                      )}
+                      {portfolioData && portfolioData.profitLoss !== 0 && (
+                        <span className={`text-sm ${portfolioData.profitLoss >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {portfolioData.profitLoss >= 0 ? '+' : ''}${Math.abs(portfolioData.profitLoss).toLocaleString()}
+                        </span>
+                      )}
                     </div>
                     <div className="mt-2 text-sm text-slate-400">
-                      30-year portfolio growth
+                      {portfolioData && portfolioData.assetCount > 0 ? 'Your portfolio' : 'Start investing today'}
                     </div>
                   </div>
                   <div className="hidden md:flex space-x-6">
                     <div className="text-center">
-                      <p className="text-2xl font-semibold text-green-400">+$12,450</p>
-                      <p className="text-slate-400 text-sm">This Month</p>
+                      <p className="text-2xl font-semibold text-blue-400">
+                        ${portfolioData ? portfolioData.totalInvested.toLocaleString() : '0'}
+                      </p>
+                      <p className="text-slate-400 text-sm">Total Invested</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-semibold text-blue-400">+$114,500</p>
-                      <p className="text-slate-400 text-sm">Total Gains</p>
+                      <p className={`text-2xl font-semibold ${portfolioData && portfolioData.profitLoss >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        {portfolioData && portfolioData.profitLoss !== 0 ? 
+                          `${portfolioData.profitLoss >= 0 ? '+' : ''}$${Math.abs(portfolioData.profitLoss).toLocaleString()}` : 
+                          '$0'
+                        }
+                      </p>
+                      <p className="text-slate-400 text-sm">Total Gains/Loss</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-semibold text-purple-400">+1,145%</p>
-                      <p className="text-slate-400 text-sm">Total Return</p>
+                      <p className="text-2xl font-semibold text-purple-400">{portfolioData ? portfolioData.assetCount : 0}</p>
+                      <p className="text-slate-400 text-sm">Assets</p>
                     </div>
                   </div>
                 </div>
@@ -359,57 +351,88 @@ const Dashboard = () => {
                 <CardTitle className="text-slate-200">Your Holdings</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b border-slate-700">
-                        <th className="text-left py-3 text-slate-400 font-medium">Asset</th>
-                        <th className="text-left py-3 text-slate-400 font-medium">Price</th>
-                        <th className="text-left py-3 text-slate-400 font-medium">24h Change</th>
-                        <th className="text-left py-3 text-slate-400 font-medium">Holdings</th>
-                        <th className="text-right py-3 text-slate-400 font-medium">Value</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {assets.map((asset, index) => (
-                        <motion.tr 
-                          key={index}
-                          className="border-b border-slate-700 hover:bg-slate-700/50 transition-colors"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) }}
-                        >
-                          <td className="py-4">
-                            <div className="flex items-center space-x-3">
-                              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                                <span className="text-xs font-bold">{asset.symbol[0]}</span>
-                              </div>
-                              <div>
-                                <p className="font-medium text-white">{asset.name}</p>
-                                <p className="text-slate-400 text-sm">{asset.symbol}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="py-4 text-white font-medium">{asset.price}</td>
-                          <td className="py-4">
-                            <div className={`flex items-center space-x-1 ${
-                              asset.isPositive ? 'text-green-400' : 'text-red-400'
-                            }`}>
-                              {asset.isPositive ? (
-                                <ArrowUpRight className="w-4 h-4" />
-                              ) : (
-                                <ArrowDownRight className="w-4 h-4" />
-                              )}
-                              <span className="font-medium">{asset.change}</span>
-                            </div>
-                          </td>
-                          <td className="py-4 text-slate-300">{asset.holdings}</td>
-                          <td className="py-4 text-right font-semibold text-white">{asset.value}</td>
-                        </motion.tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                {isLoading ? (
+                  <div className="text-center py-8 text-slate-400">
+                    <div className="animate-spin w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full mx-auto mb-2"></div>
+                    Loading your portfolio...
+                  </div>
+                ) : assets.length === 0 ? (
+                  <div className="text-center py-8 text-slate-400">
+                    <p className="mb-4">No assets in your portfolio yet.</p>
+                    <Button 
+                      onClick={() => navigate('/portfolio')} 
+                      className="bg-blue-600 hover:bg-blue-700"
+                    >
+                      Add Your First Asset
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-slate-700">
+                          <th className="text-left py-3 text-slate-400 font-medium">Asset</th>
+                          <th className="text-left py-3 text-slate-400 font-medium">Category</th>
+                          <th className="text-left py-3 text-slate-400 font-medium">Investment</th>
+                          <th className="text-left py-3 text-slate-400 font-medium">Current Value</th>
+                          <th className="text-right py-3 text-slate-400 font-medium">P&L</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {assets.map((asset, index) => {
+                          const profitLoss = asset.current_value - asset.investment_amount
+                          const profitLossPercent = asset.investment_amount > 0 ? (profitLoss / asset.investment_amount) * 100 : 0
+                          const isPositive = profitLoss >= 0
+
+                          return (
+                            <motion.tr 
+                              key={asset.id}
+                              className="border-b border-slate-700 hover:bg-slate-700/50 transition-colors cursor-pointer"
+                              onClick={() => navigate('/portfolio')}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) }}
+                            >
+                              <td className="py-4">
+                                <div className="flex items-center space-x-3">
+                                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                                    <span className="text-xs font-bold">{asset.symbol?.[0] || asset.asset_name?.[0] || '?'}</span>
+                                  </div>
+                                  <div>
+                                    <p className="font-medium text-white">{asset.asset_name}</p>
+                                    <p className="text-slate-400 text-sm">{asset.symbol}</p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="py-4">
+                                <Badge variant="secondary" className="bg-slate-700 text-slate-300 capitalize">
+                                  {asset.category}
+                                </Badge>
+                              </td>
+                              <td className="py-4 text-white font-medium">${asset.investment_amount.toLocaleString()}</td>
+                              <td className="py-4 text-white font-medium">${asset.current_value.toLocaleString()}</td>
+                              <td className="py-4 text-right">
+                                <div className={`flex items-center justify-end space-x-1 ${
+                                  isPositive ? 'text-green-400' : 'text-red-400'
+                                }`}>
+                                  {isPositive ? (
+                                    <ArrowUpRight className="w-4 h-4" />
+                                  ) : (
+                                    <ArrowDownRight className="w-4 h-4" />
+                                  )}
+                                  <div className="text-right">
+                                    <p className="font-semibold">${Math.abs(profitLoss).toLocaleString()}</p>
+                                    <p className="text-xs">({profitLossPercent.toFixed(1)}%)</p>
+                                  </div>
+                                </div>
+                              </td>
+                            </motion.tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </motion.div>

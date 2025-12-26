@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,8 +17,12 @@ import Portfolio from "./pages/Portfolio";
 import AddAsset from "./pages/AddAsset";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import BankTransfer from "./pages/BankTransfer";
+import WireTransfer from "./pages/WireTransfer";
+import PayPalPayment from "./pages/PayPalPayment";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Admin from './pages/Admin'
 
 const queryClient = new QueryClient();
 
@@ -178,6 +181,56 @@ function AnimatedRoutes() {
           >
             <ProtectedRoute>
               <Settings />
+            </ProtectedRoute>
+          </motion.div>
+        } />
+        <Route path="/admin" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <Admin />
+          </motion.div>
+        } />
+        <Route path="/payment/bank-transfer" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <ProtectedRoute>
+              <BankTransfer />
+            </ProtectedRoute>
+          </motion.div>
+        } />
+        <Route path="/payment/wire-transfer" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <ProtectedRoute>
+              <WireTransfer />
+            </ProtectedRoute>
+          </motion.div>
+        } />
+        <Route path="/payment/paypal" element={
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+          >
+            <ProtectedRoute>
+              <PayPalPayment />
             </ProtectedRoute>
           </motion.div>
         } />

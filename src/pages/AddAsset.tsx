@@ -34,6 +34,7 @@ import {
 import { useAuth } from '@/contexts/AuthContext'
 import { useToast } from '@/hooks/use-toast'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { dbService } from '@/services/database'
 
 const AddAsset = () => {
   const { user, signOut } = useAuth()
@@ -62,6 +63,7 @@ const AddAsset = () => {
 
   const [errors, setErrors] = useState({})
   const [cardErrors, setCardErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSignOut = async () => {
     const { error } = await signOut()
@@ -202,6 +204,70 @@ const AddAsset = () => {
     if (cardErrors[field]) {
       setCardErrors(prev => ({ ...prev, [field]: '' }))
     }
+  }
+
+  const handleAssetPurchase = async () => {
+    setIsLoading(true)
+    try {
+      // Create the asset in database
+      await dbService.createUserAsset({
+        asset_name: formData.assetName,
+        symbol: formData.symbol,
+        category: formData.category,
+        investment_amount: parseFloat(formData.price),
+        current_value: parseFloat(formData.price), // Initially same as investment
+        quantity: 0, // To be updated by admin when asset is actually purchased
+        notes: formData.notes,
+        status: 'pending'
+      })
+
+      // Create transaction record
+      await dbService.createTransaction({
+        type: 'purchase',
+        amount: parseFloat(formData.price),
+        description: `Investment in ${formData.assetName} (${formData.symbol})`
+      })
+
+      // Update user balance
+      const currentBalance = await dbService.getUserBalance()
+      await dbService.updateUserBalance({
+        total_invested: (currentBalance?.total_invested || 0) + parseFloat(formData.price),
+        current_portfolio_value: (currentBalance?.current_portfolio_value || 0) + parseFloat(formData.price)
+      })
+
+      toast({
+        title: "Investment Request Submitted",
+        description: "Your investment request has been submitted successfully. Our team will purchase the asset for you.",
+      })
+
+      navigate('/portfolio')
+    } catch (error) {
+      console.error('Error submitting investment:', error)
+      toast({
+        title: "Error",
+        description: "Failed to submit investment request. Please try again.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // Update the payment methods to navigate to payment pages
+  const handlePaymentMethod = (method: string) => {
+    const routes = {
+      'Bank Transfer': '/payment/bank-transfer',
+      'Wire Transfer': '/payment/wire-transfer',
+      'PayPal': '/payment/paypal'
+    }
+    
+    // Navigate to the respective payment page with the investment amount
+    navigate(routes[method], { 
+      state: { 
+        amount: formData.investment_amount,
+        asset: formData
+      } 
+    })
   }
 
   const selectedCategory = assetCategories.find(cat => cat.value === formData.category)
@@ -675,9 +741,13 @@ const AddAsset = () => {
                             <p className="text-green-400 text-sm">• Secure & Reliable • 1-3 business days</p>
                           </div>
                         </div>
-                        <Button className="bg-blue-600 hover:bg-blue-700">
+                        <Button 
+                          className="bg-blue-600 hover:bg-blue-700"
+                          onClick={() => handlePaymentMethod('Bank Transfer')}
+                          disabled={isLoading}
+                        >
                           <Building2 className="w-4 h-4 mr-2" />
-                          Choose Bank Transfer
+                          {isLoading ? 'Processing...' : 'Choose Bank Transfer'}
                         </Button>
                       </div>
                     </CardContent>
@@ -697,9 +767,13 @@ const AddAsset = () => {
                             <p className="text-green-400 text-sm">• Global Support • Same day processing</p>
                           </div>
                         </div>
-                        <Button className="bg-green-600 hover:bg-green-700">
+                        <Button 
+                          className="bg-green-600 hover:bg-green-700"
+                          onClick={() => handlePaymentMethod('Wire Transfer')}
+                          disabled={isLoading}
+                        >
                           <Banknote className="w-4 h-4 mr-2" />
-                          Choose Wire Transfer
+                          {isLoading ? 'Processing...' : 'Choose Wire Transfer'}
                         </Button>
                       </div>
                     </CardContent>
@@ -719,9 +793,13 @@ const AddAsset = () => {
                             <p className="text-green-400 text-sm">• Instant • Buyer Protection</p>
                           </div>
                         </div>
-                        <Button className="bg-yellow-600 hover:bg-yellow-700">
+                        <Button 
+                          className="bg-yellow-600 hover:bg-yellow-700"
+                          onClick={() => handlePaymentMethod('PayPal')}
+                          disabled={isLoading}
+                        >
                           <DollarSign className="w-4 h-4 mr-2" />
-                          Pay with PayPal
+                          {isLoading ? 'Processing...' : 'Pay with PayPal'}
                         </Button>
                       </div>
                     </CardContent>
