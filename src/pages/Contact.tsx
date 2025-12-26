@@ -214,11 +214,11 @@ const Contact = () => {
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="investment-advisory">Investment Advisory</SelectItem>
-                          <SelectItem value="merchant-services">Merchant Services</SelectItem>
-                          <SelectItem value="cyber-recovery">Cyber Recovery</SelectItem>
-                          <SelectItem value="relationship-verification">Relationship Verification</SelectItem>
-                          <SelectItem value="general-consultation">General Consultation</SelectItem>
+                          <SelectItem value="forex-trading">Forex Trading</SelectItem>
+                          <SelectItem value="crypto-trading">Crypto Trading</SelectItem>
+                          <SelectItem value="commodities-trading">Commodities Trading</SelectItem>
+                          <SelectItem value="indices-trading">Indices Trading</SelectItem>
+                          <SelectItem value="trading-consultation">Trading Consultation</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
