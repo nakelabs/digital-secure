@@ -112,7 +112,7 @@ const Index = () => {
             Start your investment journey with Bitcoin, Ethereum, and digital real estate. Our expert team specializes in cryptocurrency portfolio management and tokenized assets.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/auth">
+            <Link to="/dashboard">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
                 Start Investing Now
               </Button>
