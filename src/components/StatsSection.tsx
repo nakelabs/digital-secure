@@ -7,33 +7,93 @@ const StatsSection = () => {
   const stats = [
     {
       icon: Users,
-      number: "500+",
-      label: "Active Investors",
-      description: "Growing community of crypto and real estate investors"
+      number: "Private",
+      label: "Member Access",
+      description: "Invitation-only platform for qualified investors"
     },
     {
       icon: TrendingUp,
-      number: "$50M+",
-      label: "Assets Under Management",
-      description: "Bitcoin, Ethereum, and tokenized real estate portfolios"
+      number: "Digital",
+      label: "Real Estate Focus",
+      description: "Income-producing online assets and property portfolios"
     },
     {
       icon: Shield,
-      number: "95%",
-      label: "Avg. Annual ROI",
-      description: "Exceptional returns through strategic crypto investments"
+      number: "Zero",
+      label: "Interest Financing*",
+      description: "Structured financing programs for qualified members"
     },
     {
       icon: Clock,
-      number: "24/7",
-      label: "Market Access",
-      description: "Round-the-clock cryptocurrency trading and monitoring"
+      number: "Real",
+      label: "Asset Ownership",
+      description: "Pathway to tangible property and wealth building"
     }
   ];
 
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
+        {/* Success Stories Section */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            RAXOPAYCO Investment Success
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-12">
+            Our private investment platform delivers measurable progress through digital real estate and structured ownership pathways. See how qualified members achieve real asset ownership.
+          </p>
+          
+          {/* Success Images Row */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <motion.div 
+              className="relative rounded-xl overflow-hidden shadow-lg"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <img 
+                src="/images/sold.jpeg" 
+                alt="Investment Success Story" 
+                className="w-full h-64 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">Ownership Achievement</h3>
+                  <p className="text-sm opacity-90">Structured pathway to real property ownership</p>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="relative rounded-xl overflow-hidden shadow-lg"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <img 
+                src="/images/name.jpeg" 
+                alt="Client Portfolio" 
+                className="w-full h-64 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">Member Success</h3>
+                  <p className="text-sm opacity-90">Private investment strategy results</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Stats Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div 

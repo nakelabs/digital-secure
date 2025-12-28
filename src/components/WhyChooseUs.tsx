@@ -8,33 +8,33 @@ const WhyChooseUs = () => {
   const reasons = [
     {
       icon: Shield,
-      title: "Military-Grade Security",
-      description: "Your data and assets protected with the highest security standards and encryption protocols."
+      title: "Private & Exclusive",
+      description: "Invitation-only platform designed for qualified professionals and high-earning specialists seeking disciplined wealth building."
     },
     {
       icon: Users,
-      title: "Expert Team",
-      description: "Certified professionals with decades of experience in cybersecurity, finance, and blockchain technology."
+      title: "Expert Guidance",
+      description: "Dedicated team specializing in digital real estate, structured ownership pathways, and wealth building strategies."
     },
     {
       icon: Award,
-      title: "Proven Track Record",
-      description: "500+ successful cases with 85% recovery rate and industry-leading client satisfaction."
+      title: "Proven Framework",
+      description: "Structured approach to real asset ownership through digital real estate and transparent progress tracking."
     },
     {
       icon: Clock,
-      title: "24/7 Global Support",
-      description: "Round-the-clock assistance available worldwide with emergency response capabilities."
+      title: "Long-term Focus",
+      description: "Built for members who value discipline, transparency, and measurable progress toward ownership goals."
     },
     {
       icon: CheckCircle,
-      title: "Results-Driven",
-      description: "We only succeed when you succeed. Our fee structure aligns our success with yours."
+      title: "Ownership-Aligned",
+      description: "Every investment strategy is designed to support your pathway to tangible property and real asset ownership."
     },
     {
       icon: Globe,
-      title: "Worldwide Reach",
-      description: "Licensed and operating globally with local expertise and international capabilities."
+      title: "Global Access",
+      description: "Digital real estate opportunities and ownership pathways available to qualified international investors."
     }
   ];
 
@@ -49,10 +49,10 @@ const WhyChooseUs = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Why Choose Our Services?
+            Why Choose RAXOPAYCO?
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            When your digital assets and security are at stake, you need proven experts who deliver results with integrity and professionalism.
+            A disciplined pathway to real asset ownership designed for professionals who value structured wealth building and transparent progress tracking.
           </p>
         </motion.div>
 

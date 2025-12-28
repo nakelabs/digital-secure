@@ -40,7 +40,7 @@ const Privacy = () => {
             </CardHeader>
             <CardContent className="prose prose-lg max-w-none">
               <p className="text-slate-600 mb-4">
-                This Privacy Policy describes how we collect, use, and protect your personal information when you use our digital security and cryptocurrency services. We are committed to maintaining the highest standards of data protection and privacy.
+                This Privacy Policy describes how we collect, use, and protect your personal information when you use our private investment platform and digital real estate services. We are committed to maintaining the highest standards of data protection and privacy.
               </p>
               <div className="bg-blue-50 p-4 rounded-lg">
                 <p className="text-blue-800 font-medium">
@@ -83,10 +83,10 @@ const Privacy = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-slate-900 mb-3">Service-Related Information</h3>
                   <ul className="list-disc list-inside text-slate-600 space-y-1">
-                    <li>Cryptocurrency transaction details (when relevant)</li>
-                    <li>Digital asset information for recovery services</li>
-                    <li>Investigation details for security services</li>
-                    <li>Financial information for advisory services</li>
+                    <li>Investment portfolio details and performance data</li>
+                    <li>Digital real estate asset information</li>
+                    <li>Ownership pathway progress and milestones</li>
+                    <li>Financial information for advisory and financing services</li>
                   </ul>
                 </div>
               </div>
@@ -277,21 +277,21 @@ const Privacy = () => {
                 <div className="bg-amber-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-amber-900 mb-2">Investment Advisory Disclaimer</h3>
                   <p className="text-amber-800 text-sm">
-                    Our investment advisory services do not constitute financial advice. Cryptocurrency investments carry significant risk, and past performance does not guarantee future results. Always consult with qualified financial professionals before making investment decisions.
+                    Our investment advisory services do not constitute financial advice. Digital real estate and structured investment pathways carry risk, and past performance does not guarantee future results. Always consult with qualified financial professionals before making investment decisions.
                   </p>
                 </div>
                 
                 <div className="bg-red-50 p-4 rounded-lg">
-                  <h3 className="font-semibold text-red-900 mb-2">Recovery Services Disclaimer</h3>
+                  <h3 className="font-semibold text-red-900 mb-2">Private Access Disclaimer</h3>
                   <p className="text-red-800 text-sm">
-                    While we use advanced techniques and have a high success rate, we cannot guarantee the recovery of lost or stolen digital assets. Success depends on various factors including the nature of the incident and cooperation from relevant parties.
+                    Access to RAXOPAYCO services is by invitation and qualification only. We cannot guarantee investment returns or property ownership outcomes. Success depends on market conditions, member discipline, and compliance with program requirements.
                   </p>
                 </div>
                 
                 <div className="bg-purple-50 p-4 rounded-lg">
-                  <h3 className="font-semibold text-purple-900 mb-2">Investigation Services Disclaimer</h3>
+                  <h3 className="font-semibold text-purple-900 mb-2">Financing Services Disclaimer</h3>
                   <p className="text-purple-800 text-sm">
-                    Our investigation services are for informational purposes only and should not be considered legal advice. Any evidence gathered should be reviewed by qualified legal professionals before use in legal proceedings.
+                    Zero-interest financing programs are subject to approval, terms, and conditions. Financing access depends on member history, compliance, and eligibility review. Administrative fees may apply.
                   </p>
                 </div>
               </div>

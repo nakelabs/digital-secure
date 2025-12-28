@@ -91,7 +91,7 @@ const Contact = () => {
               Get Expert Help Today
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              Professional consultation available 24/7 for all your digital security and cryptocurrency needs
+              Professional consultation available 24/7 for all your digital real estate and ownership pathway needs
             </p>
             <div className="flex items-center justify-center space-x-8 text-sm text-slate-500">
               <div className="flex items-center">
@@ -214,11 +214,11 @@ const Contact = () => {
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="forex-trading">Forex Trading</SelectItem>
-                          <SelectItem value="crypto-trading">Crypto Trading</SelectItem>
-                          <SelectItem value="commodities-trading">Commodities Trading</SelectItem>
-                          <SelectItem value="indices-trading">Indices Trading</SelectItem>
-                          <SelectItem value="trading-consultation">Trading Consultation</SelectItem>
+                          <SelectItem value="ownership-pathways">Ownership Pathways</SelectItem>
+                          <SelectItem value="digital-real-estate">Digital Real Estate</SelectItem>
+                          <SelectItem value="investment-advisory">Investment Advisory</SelectItem>
+                          <SelectItem value="financing-options">Financing Options</SelectItem>
+                          <SelectItem value="member-services">Member Services</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

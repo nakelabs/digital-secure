@@ -10,30 +10,30 @@ const ServicesOverview = () => {
   const services = [
     {
       icon: TrendingUp,
-      title: "Investment Advisory",
-      description: "Expert cryptocurrency investment guidance and portfolio optimization strategies for individuals and institutions.",
-      features: ["Portfolio Analysis", "Risk Assessment", "Market Insights", "Regulatory Compliance"],
+      title: "Digital Real Estate",
+      description: "Income-producing online assets including monetized websites, digital brands, and platforms designed for sustainable growth.",
+      features: ["Website Portfolios", "Digital Brands", "Online Businesses", "Lead Generation Assets"],
       link: "/services"
     },
     {
       icon: Shield,
-      title: "Merchant Services",
-      description: "Comprehensive cryptocurrency merchant solutions including secure wallets and payment integration.",
-      features: ["Secure Wallets", "Payment Gateways", "Multi-sig Solutions", "Exchange Integration"],
+      title: "Ownership Pathways",
+      description: "Structured routes to real property ownership through disciplined investment and strategic financing options.",
+      features: ["Property Targeting", "Ownership Milestones", "Financing Access", "Equity Participation"],
       link: "/services"
     },
     {
       icon: Search,
-      title: "Cyber Recovery",
-      description: "Professional recovery services for hacked accounts, stolen funds, and compromised digital assets.",
-      features: ["Asset Recovery", "Blockchain Forensics", "Security Hardening", "Incident Response"],
+      title: "Investment Advisory",
+      description: "Expert guidance in building diversified portfolios combining digital assets with traditional market exposure.",
+      features: ["Portfolio Strategy", "Risk Assessment", "Market Analysis", "Performance Tracking"],
       link: "/services"
     },
     {
-      icon: TrendingUp,
-      title: "Investment Services",
-      description: "Comprehensive investment solutions including traditional assets, digital currencies, and alternative investment opportunities.",
-      features: ["Asset Diversification", "Market Research", "Investment Planning", "Performance Tracking"],
+      icon: Heart,
+      title: "Private Member Services",
+      description: "Exclusive access to zero-interest financing, accelerated ownership structures, and personalized wealth building strategies.",
+      features: ["Zero-Interest Financing*", "Accelerated Ownership", "Private Access", "Personalized Strategy"],
       link: "/auth"
     }
   ];
@@ -49,10 +49,10 @@ const ServicesOverview = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Professional Digital Solutions
+            RAXOPAYCO Investment Framework
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Comprehensive services to protect, recover, and optimize your digital assets and relationships with expert precision and confidentiality.
+            A disciplined approach to wealth building through digital real estate and structured ownership pathways. Private access for qualified members only.
           </p>
         </motion.div>
 
@@ -97,7 +97,7 @@ const ServicesOverview = () => {
                   <Link to={service.link}>
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                       <Button variant="outline" className="w-full hover:bg-blue-50">
-                        {service.title === "Investment Services" ? "Invest Now" : "Learn More"} <ArrowRight className="w-4 h-4 ml-2" />
+                        {service.title === "Private Member Services" ? "Apply Now" : "Learn More"} <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </motion.div>
                   </Link>
@@ -121,6 +121,47 @@ const ServicesOverview = () => {
               </Button>
             </motion.div>
           </Link>
+        </motion.div>
+
+        {/* Collaboration Section */}
+        <motion.div 
+          className="mt-20 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl overflow-hidden shadow-lg"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="md:flex items-center">
+            <div className="md:w-1/2 p-8 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+                Collaborative Wealth Building Approach
+              </h3>
+              <p className="text-lg text-slate-600 mb-6">
+                Our team works closely with qualified members to develop personalized investment strategies. Through disciplined planning and expert guidance, we help you navigate digital real estate and structured ownership pathways.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center">
+                  <Shield className="w-5 h-5 text-green-500 mr-3" />
+                  <span className="text-slate-700">Personalized Ownership Strategy</span>
+                </div>
+                <div className="flex items-center">
+                  <Shield className="w-5 h-5 text-green-500 mr-3" />
+                  <span className="text-slate-700">Expert Team Collaboration</span>
+                </div>
+                <div className="flex items-center">
+                  <Shield className="w-5 h-5 text-green-500 mr-3" />
+                  <span className="text-slate-700">Continuous Progress Monitoring</span>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <img 
+                src="/images/collabration.png" 
+                alt="Team Collaboration" 
+                className="w-full h-80 md:h-full object-cover"
+              />
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

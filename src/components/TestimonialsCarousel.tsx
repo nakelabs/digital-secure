@@ -8,24 +8,24 @@ const TestimonialsCarousel = () => {
   const testimonials = [
     {
       name: "Michael Chen",
-      role: "Crypto Investor",
-      text: "After losing $50,000 to a phishing attack, I thought my crypto was gone forever. The team recovered 90% of my funds and secured my remaining assets. Incredible expertise!",
+      role: "Senior Executive",
+      text: "RAXOPAYCO's disciplined approach to digital real estate investment has transformed my wealth building strategy. The structured pathways and zero-interest financing made homeownership possible sooner than expected.",
       rating: 5,
-      result: "$45,000 recovered"
+      result: "Homeowner in 2 years"
     },
     {
       name: "Sarah Martinez",
       role: "Business Owner",
-      text: "Their merchant services transformed our crypto operations. We saw a 300% increase in transactions with their secure infrastructure and support.",
+      text: "The private member platform provided exclusive access to investment opportunities I never knew existed. Their digital real estate portfolio generates consistent passive income.",
       rating: 5,
-      result: "300% growth"
+      result: "Consistent passive income"
     },
     {
       name: "David Kim",
-      role: "Investment Manager",
-      text: "Professional investment advisory helped our portfolio outperform the market by 25% while maintaining lower risk exposure during volatility.",
+      role: "International Professional",
+      text: "As a diaspora investor, RAXOPAYCO's structured approach helped me build real asset ownership while living abroad. The transparency and progress tracking are exceptional.",
       rating: 5,
-      result: "25% outperformance"
+      result: "Real asset ownership"
     }
   ];
 
@@ -40,10 +40,10 @@ const TestimonialsCarousel = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            What Our Clients Say
+            What Our Members Say
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Real results from real clients who trusted us with their most critical digital challenges
+            Real results from qualified members who've achieved ownership through our structured investment platform
           </p>
         </motion.div>
 

@@ -9,86 +9,86 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Michael Chen",
-      role: "Crypto Investor",
-      company: "Private Individual",
+      role: "Senior Executive",
+      company: "Technology Sector",
       rating: 5,
-      text: "After losing $50,000 to a sophisticated phishing attack, I thought my crypto was gone forever. The team not only recovered 90% of my funds but also helped secure my remaining assets. Their expertise in blockchain forensics is unmatched.",
-      service: "Cyber Recovery",
-      result: "$45,000 recovered",
-      timeframe: "3 weeks"
+      text: "RAXOPAYCO's structured approach to digital real estate investment transformed my wealth building strategy. The disciplined pathway and zero-interest financing made homeownership possible sooner than I ever expected.",
+      service: "Ownership Pathways",
+      result: "Homeowner in 18 months",
+      timeframe: "2 years"
     },
     {
       name: "Sarah Martinez",
-      role: "CEO",
-      company: "TechStart Solutions",
+      role: "Entrepreneur",
+      company: "Business Owner",
       rating: 5,
-      text: "We needed professional cryptocurrency merchant services for our business. They set up everything from multi-sig wallets to payment gateways. Our crypto transactions increased by 300% with their secure infrastructure.",
-      service: "Merchant Services",
-      result: "300% transaction increase",
-      timeframe: "2 months"
+      text: "The private member platform provided access to digital real estate opportunities I never knew existed. My portfolio of online assets generates consistent passive income that supports my ownership goals.",
+      service: "Digital Real Estate",
+      result: "Consistent passive income",
+      timeframe: "8 months"
     },
     {
       name: "David Kim",
-      role: "Investment Manager",
-      company: "Private Wealth Group",
+      role: "International Professional",
+      company: "Diaspora Investor",
       rating: 5,
-      text: "Their investment advisory service helped us navigate the complex crypto market during the 2023 volatility. Our portfolio outperformed the market by 25% while maintaining lower risk exposure.",
-      service: "Investment Advisory",
-      result: "25% outperformance",
-      timeframe: "6 months"
-    },
-    {
-      name: "Anonymous Client",
-      role: "Business Owner",
-      company: "Confidential",
-      rating: 5,
-      text: "I suspected my business partner was being unfaithful to our agreement and possibly hiding assets. Their discrete investigation provided clear evidence and helped me make informed legal decisions. Professional and confidential throughout.",
-      service: "Relationship Verification",
-      result: "Clear evidence provided",
-      timeframe: "4 weeks"
+      text: "As someone living abroad, RAXOPAYCO's structured investment platform helped me build real asset ownership back home. The transparency and progress tracking are exceptional.",
+      service: "Private Member Advisory",
+      result: "Real asset ownership",
+      timeframe: "3 years"
     },
     {
       name: "Jennifer Wu",
-      role: "Small Business Owner",
-      company: "E-commerce Store",
+      role: "High-Earning Specialist",
+      company: "Medical Professional",
       rating: 5,
-      text: "When our business accounts were hacked and $25,000 in Bitcoin was stolen, I was devastated. They traced the funds through multiple exchanges and recovered 85% of our losses. Incredible work!",
-      service: "Asset Recovery",
-      result: "$21,250 recovered",
-      timeframe: "5 weeks"
+      text: "The disciplined approach to wealth building through digital assets was exactly what I needed. The team guided me through property targeting and milestone planning perfectly.",
+      service: "Investment Framework",
+      result: "Property acquisition ready",
+      timeframe: "14 months"
     },
     {
       name: "Robert Thompson",
-      role: "Private Investor",
-      company: "Individual",
+      role: "Business Owner",
+      company: "Private Individual",
       rating: 5,
-      text: "Their cryptocurrency investment strategy helped me diversify my portfolio and navigate regulatory compliance. My returns improved by 40% while reducing overall risk. Highly recommend their expertise.",
-      service: "Investment Advisory",
-      result: "40% return improvement",
-      timeframe: "8 months"
+      text: "RAXOPAYCO's zero-interest financing program was a game changer. The structured repayment terms and ownership acceleration support exceeded all my expectations.",
+      service: "Zero-Interest Financing",
+      result: "Accelerated ownership",
+      timeframe: "6 months"
+    },
+    {
+      name: "Anonymous Member",
+      role: "Private Investor",
+      company: "Confidential",
+      rating: 5,
+      text: "The private access and exclusive opportunities available to qualified members are remarkable. My digital real estate portfolio now generates enough passive income to support my lifestyle.",
+      service: "Private Member Services",
+      result: "Financial independence",
+      timeframe: "2.5 years"
     }
   ];
 
   const caseStudies = [
     {
-      title: "Major Exchange Hack Recovery",
-      challenge: "Client lost $100,000 when a cryptocurrency exchange was compromised",
-      solution: "Blockchain forensics, legal coordination, and asset tracing across 5 exchanges",
-      result: "$87,000 recovered (87% recovery rate)",
+      title: "Accelerated Homeownership",
+      challenge: "Executive needed structured pathway to property ownership while maintaining investment growth",
+      solution: "Digital real estate portfolio development, milestone tracking, and zero-interest financing access",
+      result: "Property ownership achieved 2 years ahead of traditional timeline",
       icon: Shield
     },
     {
-      title: "Corporate Investment Strategy",
-      challenge: "Tech company needed crypto investment framework for $2M treasury",
-      solution: "Risk assessment, regulatory compliance, and custom investment strategy",
-      result: "15% annual returns with managed risk exposure",
+      title: "Digital Real Estate Portfolio",
+      challenge: "Entrepreneur seeking passive income streams to support ownership goals",
+      solution: "Monetized website acquisition, digital brand development, and income optimization",
+      result: "Monthly passive income exceeding traditional property rental yields",
       icon: TrendingUp
     },
     {
-      title: "Business Partnership Investigation",
-      challenge: "Suspected financial irregularities in a $5M partnership",
-      solution: "Discrete digital investigation and financial analysis",
-      result: "Evidence led to successful legal resolution",
+      title: "International Investment Strategy",
+      challenge: "Diaspora investor needed structured approach to build wealth from abroad",
+      solution: "Private member advisory, compliance review, and ownership progress tracking",
+      result: "Successful real asset accumulation with transparent milestone progress",
       icon: Search
     }
   ];
@@ -102,18 +102,18 @@ const Testimonials = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Client Success Stories
+              Member Success Stories
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              Real results from real clients who trusted us with their most critical digital challenges
+              Real results from qualified members who achieved ownership through our private investment platform
             </p>
             <div className="flex items-center justify-center space-x-8 text-sm text-slate-500">
               <div className="flex items-center">
                 <Star className="w-5 h-5 text-yellow-400 mr-2" />
-                <span>4.9/5 Average Rating</span>
+                <span>Private Access Only</span>
               </div>
-              <div>500+ Successful Cases</div>
-              <div>$50M+ Assets Recovered</div>
+              <div>Invitation-Based Platform</div>
+              <div>Real Asset Focus</div>
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@ const Testimonials = () => {
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">
-            Detailed Case Studies
+            Member Success Case Studies
           </h2>
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {caseStudies.map((study, index) => (
@@ -210,24 +210,24 @@ const Testimonials = () => {
       <section className="py-20">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12">
-            Trusted by Clients Worldwide
+            Trusted by Qualified Members
           </h2>
           <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
-              <p className="text-slate-600">Cases Resolved</p>
+              <div className="text-3xl font-bold text-blue-600 mb-2">Private</div>
+              <p className="text-slate-600">Access Only</p>
             </div>
             <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">$50M+</div>
-              <p className="text-slate-600">Assets Recovered</p>
+              <div className="text-3xl font-bold text-blue-600 mb-2">Digital</div>
+              <p className="text-slate-600">Real Estate Focus</p>
             </div>
             <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">97.9%</div>
-              <p className="text-slate-600">Average Recovery Rate</p>
+              <div className="text-3xl font-bold text-blue-600 mb-2">Zero</div>
+              <p className="text-slate-600">Interest Financing*</p>
             </div>
             <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-              <p className="text-slate-600">Global Support</p>
+              <div className="text-3xl font-bold text-blue-600 mb-2">Real</div>
+              <p className="text-slate-600">Asset Ownership</p>
             </div>
           </div>
         </div>

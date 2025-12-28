@@ -24,10 +24,10 @@ const Footer = () => {
           >
             <div className="flex items-center space-x-2 mb-4">
               <Shield className="w-8 h-8 text-blue-400" />
-              <span className="text-xl font-bold">raxopayco</span>
+              <span className="text-xl font-bold">RAXOPAYCO</span>
             </div>
             <p className="text-slate-300 mb-4">
-              Professional digital security and cryptocurrency solutions. Protecting your digital future with expert services worldwide.
+              Private investment platform specializing in digital real estate and structured ownership pathways. Building wealth through disciplined investment strategies.
             </p>
             <div className="flex space-x-4">
               {[
@@ -58,12 +58,12 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-4">Our Services</h3>
+            <h3 className="text-lg font-semibold mb-4">Investment Framework</h3>
             <ul className="space-y-2 text-slate-300">
+              <li><Link to="/services" className="hover:text-white transition-colors">Digital Real Estate</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">Ownership Pathways</Link></li>
               <li><Link to="/services" className="hover:text-white transition-colors">Investment Advisory</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Merchant Services</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Cyber Recovery</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Relationship Verification</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">Member Services</Link></li>
             </ul>
           </motion.div>
 
@@ -74,11 +74,11 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <h3 className="text-lg font-semibold mb-4">Platform</h3>
             <ul className="space-y-2 text-slate-300">
-              <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/testimonials" className="hover:text-white transition-colors">Testimonials</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/about" className="hover:text-white transition-colors">About RAXOPAYCO</Link></li>
+              <li><Link to="/testimonials" className="hover:text-white transition-colors">Member Success</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Apply Access</Link></li>
               <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
             </ul>
           </motion.div>

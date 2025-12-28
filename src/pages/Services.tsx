@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TrendingUp, Shield, PieChart, Building, ArrowRight, CheckCircle, Clock, DollarSign, Bitcoin, Banknote } from 'lucide-react';
+import { TrendingUp, Shield, PieChart, Building, ArrowRight, CheckCircle, Clock, DollarSign, Home, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
@@ -10,80 +10,80 @@ import { Link } from 'react-router-dom';
 const Services = () => {
   const services = [
     {
-      icon: Bitcoin,
-      title: "Cryptocurrency Portfolio Management",
-      description: "Professional Bitcoin, Ethereum, and altcoin investment management with AI-powered strategies.",
-      features: [
-        "Automated portfolio rebalancing and optimization",
-        "Real-time market analysis and trend forecasting", 
-        "Risk management and stop-loss strategies",
-        "DeFi yield farming and staking optimization",
-        "Tax-efficient crypto investment planning"
-      ],
-      process: [
-        "Portfolio assessment and risk profiling",
-        "Custom strategy development and backtesting",
-        "Implementation with automated trading",
-        "Continuous monitoring and optimization"
-      ],
-      pricing: "Starting from $2,500/month"
-    },
-    {
       icon: Building,
       title: "Digital Real Estate Investment",
-      description: "Tokenized real estate investments and blockchain-based property opportunities.",
+      description: "Income-producing online assets including monetized websites, digital brands, and platforms designed for sustainable wealth building.",
       features: [
-        "Tokenized property investment opportunities",
-        "Virtual real estate in metaverse platforms",
-        "Real estate NFT and fractional ownership", 
-        "Property investment via blockchain protocols",
-        "Commercial and residential tokenized assets"
+        "Monetized website portfolio development",
+        "Digital brand acquisition and optimization", 
+        "Lead-generation and online business assets",
+        "Recurring income stream establishment",
+        "Global digital property management"
       ],
       process: [
-        "Investment opportunity analysis",
-        "Due diligence and blockchain verification",
-        "Token acquisition and wallet setup",
-        "Portfolio tracking and yield monitoring"
+        "Digital asset assessment and valuation",
+        "Investment opportunity analysis and due diligence",
+        "Strategic acquisition and optimization",
+        "Performance monitoring and income tracking"
       ],
-      pricing: "Minimum investment: $10,000"
+      pricing: "Private member access required"
     },
     {
-      icon: PieChart,
-      title: "Institutional Crypto Fund Management",
-      description: "Comprehensive cryptocurrency fund management for institutions and high-net-worth individuals.",
+      icon: Home,
+      title: "Structured Ownership Pathways",
+      description: "Disciplined routes to real property ownership through strategic investment milestones and accelerated financing options.",
       features: [
-        "Multi-million dollar crypto fund management",
-        "Institutional-grade security and custody",
-        "Quantitative trading and arbitrage strategies",
+        "Property targeting and milestone planning",
+        "Ownership progress tracking and visualization",
+        "Zero-interest financing eligibility building", 
+        "Accelerated ownership structure access",
+        "Strategic purchase support and guidance"
+      ],
+      process: [
+        "Target property identification and analysis",
+        "Investment milestone planning and tracking",
+        "Financing eligibility assessment",
+        "Ownership acceleration strategy implementation"
+      ],
+      pricing: "Qualification-based access"
+    },
+    {
+      icon: Target,
+      title: "Private Member Investment Advisory",
+      description: "Comprehensive investment guidance for qualified members focused on real asset accumulation and wealth building.",
+      features: [
+        "Diversified portfolio strategy development",
+        "Market-based asset allocation guidance",
+        "Risk assessment and management protocols",
         "Regulatory compliance and reporting",
-        "24/7 monitoring and risk management"
+        "Performance tracking and optimization"
       ],
       process: [
-        "Fund structure and compliance setup",
-        "Strategy development and backtesting",
-        "Implementation with institutional partners",
-        "Regular reporting and performance reviews"
+        "Member eligibility and compliance review",
+        "Personalized strategy development",
+        "Implementation with ongoing monitoring",
+        "Regular performance reviews and adjustments"
       ],
-      pricing: "Custom pricing for $1M+ investments"
+      pricing: "Elite member tier access"
     },
     {
-      icon: DollarSign,
-      title: "Crypto Trading & Investment Education",
-      description: "Comprehensive training programs for cryptocurrency trading and investment strategies.",
+      icon: Shield,
+      title: "Zero-Interest Financing Access",
+      description: "Structured financing programs designed to accelerate ownership opportunities for qualified private members.",
       features: [
-        "Live trading sessions with expert traders",
-        "Technical analysis and chart pattern recognition",
-        "Fundamental analysis of crypto projects",
-        "Risk management and portfolio theory",
-        "One-on-one mentorship programs"
+        "No traditional interest charge structures",
+        "Structured repayment terms and flexibility",
+        "Administrative fee transparency",
+        "Ownership acceleration support",
+        "Personalized financing strategy development"
       ],
       process: [
-        "Skill assessment and learning plan creation",
-        "Interactive workshops and live sessions",
-        "Practice trading with virtual portfolios",
-        "Ongoing mentorship and performance tracking"
+        "Member history and progress assessment",
+        "Financing eligibility determination",
+        "Structured program application and approval",
+        "Ongoing compliance and progress monitoring"
       ],
-      pricing: "Courses from $1,500 - Mentorship from $5,000"
+      pricing: "Subject to approval and terms"
     }
   ];
 
@@ -96,10 +96,10 @@ const Services = () => {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Investment Services & Portfolio Management
+              RAXOPAYCO Investment Framework
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              Professional cryptocurrency and digital real estate investment solutions for maximizing returns
+              Private investment platform specializing in digital real estate and structured ownership pathways
             </p>
           </div>
         </div>
@@ -137,7 +137,7 @@ const Services = () => {
                       <p className="text-lg font-semibold text-slate-900 mb-2">{service.pricing}</p>
                       <Link to="/auth">
                         <Button className="bg-blue-600 hover:bg-blue-700">
-                          Start Investing <ArrowRight className="w-4 h-4 ml-2" />
+                          Apply for Access <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
                       </Link>
                     </div>
@@ -176,14 +176,14 @@ const Services = () => {
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Ready to Start Investing?
+            Ready to Build Real Wealth?
           </h2>
           <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-            Get access to our comprehensive cryptocurrency and real estate investment platform
+            Apply for access to our private investment platform specializing in digital real estate and structured ownership pathways
           </p>
           <Link to="/auth">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
-              Open Investment Account
+              Apply for Private Access
             </Button>
           </Link>
         </div>

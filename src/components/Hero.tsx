@@ -24,7 +24,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <Shield className="w-4 h-4 mr-2" />
-                Trusted by 500+ Crypto Investors Worldwide
+                Private Investment Platform - Invitation Only
               </motion.div>
               <motion.h1 
                 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
@@ -32,7 +32,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Invest in Bitcoin & 
+                Build Wealth Through 
                 <span className="text-blue-600"> Digital Real Estate</span>
               </motion.h1>
               <motion.p 
@@ -41,8 +41,8 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                Professional cryptocurrency investment platform specializing in Bitcoin, Ethereum, and digital real estate. 
-                Build wealth through strategic crypto investments and tokenized property portfolios with expert guidance.
+                RAXOPAYCO's structured investment platform specializes in digital real estate and ownership pathways. 
+                Transform your capital into real assets through our disciplined approach to wealth building and accelerated homeownership.
               </motion.p>
             </div>
 
@@ -55,13 +55,13 @@ const Hero = () => {
             >
               <div className="flex items-center">
                 <Star className="w-5 h-5 text-yellow-400 mr-2" />
-                <span className="text-slate-700 font-medium">4.9/5 Rating</span>
+                <span className="text-slate-700 font-medium">Selective Access</span>
               </div>
               <div className="flex items-center">
                 <Users className="w-5 h-5 text-blue-600 mr-2" />
-                <span className="text-slate-700 font-medium">500+ Investors</span>
+                <span className="text-slate-700 font-medium">Private Members</span>
               </div>
-              <div className="text-slate-700 font-medium">$50M+ Invested</div>
+              <div className="text-slate-700 font-medium">Real Asset Focus</div>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -74,7 +74,7 @@ const Hero = () => {
               <Link to="/dashboard">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
-                    Start Investing Today
+                    Apply for Access
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </motion.div>
@@ -82,7 +82,7 @@ const Hero = () => {
               <Link to="/investment-options">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-2 hover:bg-slate-50">
-                    View Investment Options
+                    View Ownership Pathways
                   </Button>
                 </motion.div>
               </Link>
@@ -96,32 +96,52 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative">
+              {/* Main Investment Image */}
               <motion.div 
-                className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-8 shadow-2xl"
+                className="relative rounded-2xl overflow-hidden shadow-2xl"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { value: "95%", label: "ROI Average", delay: 0.5 },
-                    { value: "24/7", label: "Trading", delay: 0.6 },
-                    { value: "500+", label: "Investors", delay: 0.7 },
-                    { value: "$50M+", label: "Invested", delay: 0.8 }
-                  ].map((stat, index) => (
-                    <motion.div 
-                      key={index}
-                      className="bg-white/10 backdrop-blur rounded-lg p-4 text-white"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: stat.delay }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <div className="text-2xl font-bold">{stat.value}</div>
-                      <div className="text-sm opacity-80">{stat.label}</div>
-                    </motion.div>
-                  ))}
+                <img 
+                  src="/images/invest.jpeg" 
+                  alt="Investment Portfolio" 
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-700/80">
+                  <div className="p-8 h-full flex flex-col justify-end">
+                    <div className="grid grid-cols-2 gap-4">
+                      {[
+                        { value: "Private", label: "Access Only", delay: 0.5 },
+                        { value: "Digital", label: "Real Estate", delay: 0.6 },
+                        { value: "Zero", label: "Interest*", delay: 0.7 },
+                        { value: "Real", label: "Ownership", delay: 0.8 }
+                      ].map((stat, index) => (
+                        <motion.div 
+                          key={index}
+                          className="bg-white/10 backdrop-blur rounded-lg p-4 text-white"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: stat.delay }}
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          <div className="text-2xl font-bold">{stat.value}</div>
+                          <div className="text-sm opacity-80">{stat.label}</div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
+              </motion.div>
+              
+              {/* Disclaimer */}
+              <motion.div 
+                className="absolute bottom-2 left-2 text-xs text-white/60"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
+              >
+                *Subject to approval and terms
               </motion.div>
               
               {/* Floating elements */}
