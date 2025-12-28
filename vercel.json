@@ -4,19 +4,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/admin",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/portfolio",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/dashboard",
-      "dest": "/index.html"
-    }
   ]
 }
