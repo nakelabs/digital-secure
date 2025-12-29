@@ -94,11 +94,11 @@ const Footer = () => {
             <div className="space-y-3 text-slate-300">
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-sm">support@raxopayco.com</span>
+                <span className="text-sm">raxopayco@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageCircle className="w-4 h-4 text-green-400" />
-                <span className="text-sm">+1 (256) 273‑2791</span>
+                <span className="text-sm">+1 (541) 503-6816</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Globe className="w-4 h-4 text-purple-400" />
@@ -111,7 +111,7 @@ const Footer = () => {
         <div className="border-t border-slate-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-400 text-sm">
-              © 2024 raxopayco. All rights reserved.
+              © 2025 raxopayco. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="/privacy" className="text-slate-400 hover:text-white text-sm transition-colors">
